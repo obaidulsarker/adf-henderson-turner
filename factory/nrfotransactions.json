@@ -1,0 +1,9 @@
+{
+	"name": "nrfotransactions",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "91c0e7c3-32c1-4f9e-873c-9631b1a1626b",
+		"tenantId": "2d7b6125-1f68-4d1e-be14-3b28085fd43b"
+	}
+}
