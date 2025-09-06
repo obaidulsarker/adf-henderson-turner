@@ -8,6 +8,7 @@
 		"annotations": [],
 		"type": "Excel",
 		"typeProperties": {
+			"sheetName": "Occupany",
 			"location": {
 				"type": "AzureBlobStorageLocation",
 				"fileName": "property-occupany.xlsx",
