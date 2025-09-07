@@ -1,0 +1,16 @@
+{
+	"name": "IncomeExpenceStg",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabase2",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "stg",
+			"table": "income_expense_raw"
+		}
+	}
+}
