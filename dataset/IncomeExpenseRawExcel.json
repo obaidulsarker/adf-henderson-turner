@@ -1,0 +1,70 @@
+{
+	"name": "IncomeExpenseRawExcel",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ADLStorage_LinkService",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Excel",
+		"typeProperties": {
+			"sheetName": "income_expense",
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "income-expense.xlsx",
+				"container": "income-expense-data"
+			},
+			"firstRowAsHeader": true
+		},
+		"schema": [
+			{
+				"name": "TransDate",
+				"type": "String"
+			},
+			{
+				"name": "Description_text",
+				"type": "String"
+			},
+			{
+				"name": "PropertyIndex",
+				"type": "String"
+			},
+			{
+				"name": "UnitIndex",
+				"type": "String"
+			},
+			{
+				"name": "Property",
+				"type": "String"
+			},
+			{
+				"name": "Category",
+				"type": "String"
+			},
+			{
+				"name": "DebitAmount",
+				"type": "String"
+			},
+			{
+				"name": "CreditAmount",
+				"type": "String"
+			},
+			{
+				"name": "CheckNo",
+				"type": "String"
+			},
+			{
+				"name": "Account",
+				"type": "String"
+			},
+			{
+				"name": "IndexT",
+				"type": "String"
+			},
+			{
+				"name": "TKey",
+				"type": "String"
+			}
+		]
+	}
+}
