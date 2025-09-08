@@ -78,6 +78,7 @@
 				"     upsertable:false,",
 				"     recreate:true,",
 				"     format: 'table',",
+				"     postSQLs:['SELECT * FROM stg.income_expense_raw WHERE [TransDate] IS '],",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
 				"     errorHandlingOption: 'stopOnFirstError') ~> LoadIncomeExpenseRawData"
