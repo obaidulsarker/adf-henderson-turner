@@ -9,7 +9,7 @@
 						"referenceName": "IncomeExpenseRawExcel",
 						"type": "DatasetReference"
 					},
-					"name": "source1"
+					"name": "GetIncomeExpenseSourceDate"
 				}
 			],
 			"sinks": [
@@ -18,12 +18,12 @@
 						"referenceName": "IncomeExpenceStg",
 						"type": "DatasetReference"
 					},
-					"name": "sink1"
+					"name": "LoadIncomeExpenseRawData"
 				}
 			],
 			"transformations": [
 				{
-					"name": "cast1"
+					"name": "TransformDataType"
 				}
 			],
 			"scriptLines": [
@@ -44,14 +44,14 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: true,",
 				"     inferDriftedColumnTypes: true,",
-				"     ignoreNoFilesFound: false) ~> source1",
-				"source1 cast(output(",
+				"     ignoreNoFilesFound: false) ~> GetIncomeExpenseSourceDate",
+				"GetIncomeExpenseSourceDate cast(output(",
 				"          TransDate as date 'MM/dd/yyyy',",
 				"          DebitAmount as double,",
 				"          CreditAmount as double",
 				"     ),",
-				"     errors: true) ~> cast1",
-				"cast1 sink(allowSchemaDrift: true,",
+				"     errors: true) ~> TransformDataType",
+				"TransformDataType sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     deletable:false,",
 				"     insertable:true,",
@@ -61,7 +61,7 @@
 				"     format: 'table',",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
-				"     errorHandlingOption: 'stopOnFirstError') ~> sink1"
+				"     errorHandlingOption: 'stopOnFirstError') ~> LoadIncomeExpenseRawData"
 			]
 		}
 	}
