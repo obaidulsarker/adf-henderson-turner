@@ -87,7 +87,9 @@
 				"     errorHandlingOption: 'allErrors',",
 				"     transactionCommit: 'single',",
 				"     reportSuccessOnError: false,",
-				"     outputAssertFailedRows: true) ~> LoadIncomeExpenseRawData"
+				"     outputAssertFailedRows: true,",
+				"     assertFailure_container: 'income-expense-data',",
+				"     assertFailure_folderPath: 'invalid') ~> LoadIncomeExpenseRawData"
 			]
 		}
 	}
