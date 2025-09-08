@@ -39,7 +39,8 @@
 				"     ignoreNoFilesFound: false) ~> source1",
 				"source1 cast(output(",
 				"          TransDate as date 'MM/dd/yyyy',",
-				"          DebitAmount as string",
+				"          Description_text as string,",
+				"          DebitAmount as double",
 				"     ),",
 				"     errors: true) ~> cast1"
 			]
