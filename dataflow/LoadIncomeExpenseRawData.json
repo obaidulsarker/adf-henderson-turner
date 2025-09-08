@@ -49,7 +49,6 @@
 				"     inferDriftedColumnTypes: true,",
 				"     ignoreNoFilesFound: false) ~> GetIncomeExpenseSourceDate",
 				"GetIncomeExpenseSourceDate cast(output(",
-				"          TransDate as date 'MM/dd/yyyy',",
 				"          DebitAmount as double,",
 				"          CreditAmount as double",
 				"     ),",
