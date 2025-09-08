@@ -24,6 +24,9 @@
 			"transformations": [
 				{
 					"name": "TransformDataType"
+				},
+				{
+					"name": "select1"
 				}
 			],
 			"scriptLines": [
@@ -51,7 +54,23 @@
 				"          CreditAmount as double",
 				"     ),",
 				"     errors: true) ~> TransformDataType",
-				"TransformDataType sink(allowSchemaDrift: true,",
+				"TransformDataType select(mapColumn(",
+				"          TransDate,",
+				"          Description_text,",
+				"          PropertyIndex,",
+				"          UnitIndex,",
+				"          Property,",
+				"          Category,",
+				"          DebitAmount,",
+				"          CreditAmount,",
+				"          CheckNo,",
+				"          Account,",
+				"          IndexT,",
+				"          TKey",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> select1",
+				"select1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     deletable:false,",
 				"     insertable:true,",
