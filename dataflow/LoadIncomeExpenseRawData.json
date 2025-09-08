@@ -18,7 +18,11 @@
 						"referenceName": "IncomeExpenceStg",
 						"type": "DatasetReference"
 					},
-					"name": "LoadIncomeExpenseRawData"
+					"name": "LoadIncomeExpenseRawData",
+					"rejectedDataLinkedService": {
+						"referenceName": "ADLStorage_LinkService",
+						"type": "LinkedServiceReference"
+					}
 				}
 			],
 			"transformations": [
@@ -82,7 +86,8 @@
 				"     skipDuplicateMapOutputs: true,",
 				"     errorHandlingOption: 'allErrors',",
 				"     transactionCommit: 'single',",
-				"     reportSuccessOnError: false) ~> LoadIncomeExpenseRawData"
+				"     reportSuccessOnError: false,",
+				"     outputAssertFailedRows: true) ~> LoadIncomeExpenseRawData"
 			]
 		}
 	}
