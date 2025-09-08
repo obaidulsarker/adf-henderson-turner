@@ -80,7 +80,9 @@
 				"     postSQLs:['SELECT * FROM stg.income_expense_raw WHERE [TransDate] IS '],",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
-				"     errorHandlingOption: 'stopOnFirstError') ~> LoadIncomeExpenseRawData"
+				"     errorHandlingOption: 'allErrors',",
+				"     transactionCommit: 'single',",
+				"     reportSuccessOnError: false) ~> LoadIncomeExpenseRawData"
 			]
 		}
 	}
