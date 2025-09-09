@@ -29,7 +29,7 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> GetPropertyInspectionRawData",
-				"GetPropertyInspectionRawData filter(ERROR_FUNCTION('')) ~> RemoveEmtyRecords"
+				"GetPropertyInspectionRawData filter((isNull(InspectionDueDate) && isNull(UnitIndex) && isNull(PropertyIndex) && isNull(InspectionType) && isNull(InspectionStatus))==false()) ~> RemoveEmtyRecords"
 			]
 		}
 	}
