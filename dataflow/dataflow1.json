@@ -15,7 +15,7 @@
 			"sinks": [],
 			"transformations": [
 				{
-					"name": "filter1"
+					"name": "RemoveEmtyRecords"
 				}
 			],
 			"scriptLines": [
@@ -29,7 +29,7 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> GetPropertyInspectionRawData",
-				"GetPropertyInspectionRawData filter(ERROR_FUNCTION('')) ~> filter1"
+				"GetPropertyInspectionRawData filter(ERROR_FUNCTION('')) ~> RemoveEmtyRecords"
 			]
 		}
 	}
