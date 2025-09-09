@@ -16,6 +16,27 @@
 			},
 			"firstRowAsHeader": true
 		},
-		"schema": []
+		"schema": [
+			{
+				"name": "InspectionDueDate",
+				"type": "String"
+			},
+			{
+				"name": "UnitIndex",
+				"type": "String"
+			},
+			{
+				"name": "PropertyIndex",
+				"type": "String"
+			},
+			{
+				"name": "InspectionType",
+				"type": "String"
+			},
+			{
+				"name": "InspectionStatus",
+				"type": "String"
+			}
+		]
 	}
 }

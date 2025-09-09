@@ -15,7 +15,14 @@
 			"sinks": [],
 			"transformations": [],
 			"scriptLines": [
-				"source(allowSchemaDrift: true,",
+				"source(output(",
+				"          InspectionDueDate as string,",
+				"          UnitIndex as string,",
+				"          PropertyIndex as string,",
+				"          InspectionType as string,",
+				"          InspectionStatus as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> GetPropertyInspectionRawData"
 			]
