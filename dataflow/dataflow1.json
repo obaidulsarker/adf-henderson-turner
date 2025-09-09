@@ -5,6 +5,10 @@
 		"typeProperties": {
 			"sources": [
 				{
+					"dataset": {
+						"referenceName": "PropertyInspectionRawData",
+						"type": "DatasetReference"
+					},
 					"name": "GetPropertyInspectionRawData"
 				}
 			],
@@ -12,7 +16,8 @@
 			"transformations": [],
 			"scriptLines": [
 				"source(allowSchemaDrift: true,",
-				"     validateSchema: false) ~> GetPropertyInspectionRawData"
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> GetPropertyInspectionRawData"
 			]
 		}
 	}
