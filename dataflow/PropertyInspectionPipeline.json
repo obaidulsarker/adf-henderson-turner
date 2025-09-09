@@ -12,7 +12,11 @@
 					"name": "GetPropertyInspectionRawData"
 				}
 			],
-			"sinks": [],
+			"sinks": [
+				{
+					"name": "sink1"
+				}
+			],
 			"transformations": [
 				{
 					"name": "RemoveEmtyRecords"
@@ -29,7 +33,11 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> GetPropertyInspectionRawData",
-				"GetPropertyInspectionRawData filter((isNull(InspectionDueDate) && isNull(UnitIndex) && isNull(PropertyIndex) && isNull(InspectionType) && isNull(InspectionStatus))==false()) ~> RemoveEmtyRecords"
+				"GetPropertyInspectionRawData filter((isNull(InspectionDueDate) && isNull(UnitIndex) && isNull(PropertyIndex) && isNull(InspectionType) && isNull(InspectionStatus))==false()) ~> RemoveEmtyRecords",
+				"RemoveEmtyRecords sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> sink1"
 			]
 		}
 	}
