@@ -19,9 +19,6 @@
 				},
 				{
 					"name": "InspectionType"
-				},
-				{
-					"name": "select1"
 				}
 			],
 			"scriptLines": [
@@ -38,15 +35,7 @@
 				"GetPropertyInspectionRawData filter((isNull(InspectionDueDate) && isNull(UnitIndex) && isNull(PropertyIndex) && isNull(InspectionType) && isNull(InspectionStatus))==false()) ~> RemoveEmtyRecords",
 				"RemoveEmtyRecords split(ERROR_FUNCTION(''),",
 				"     disjoint: false) ~> InspectionType@(InspectionType, )",
-				"InspectionType select(mapColumn(",
-				"          InspectionDueDate,",
-				"          UnitIndex,",
-				"          PropertyIndex,",
-				"          InspectionType,",
-				"          InspectionStatus",
-				"     ),",
-				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> select1"
+				"InspectionType)"
 			]
 		}
 	}
