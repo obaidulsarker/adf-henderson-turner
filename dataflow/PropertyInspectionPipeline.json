@@ -19,6 +19,9 @@
 				},
 				{
 					"name": "split1"
+				},
+				{
+					"name": "aggregate1"
 				}
 			],
 			"scriptLines": [
@@ -34,7 +37,8 @@
 				"     ignoreNoFilesFound: false) ~> GetPropertyInspectionRawData",
 				"GetPropertyInspectionRawData filter((isNull(InspectionDueDate) && isNull(UnitIndex) && isNull(PropertyIndex) && isNull(InspectionType) && isNull(InspectionStatus))==false()) ~> RemoveEmtyRecords",
 				"RemoveEmtyRecords split(1==1,",
-				"     disjoint: false) ~> split1@(cond1, )"
+				"     disjoint: false) ~> split1@(cond1, cond2)",
+				"split1@cond1 aggregate() ~> aggregate1"
 			]
 		}
 	}
