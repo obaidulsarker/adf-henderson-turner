@@ -21,6 +21,9 @@
 					"name": "split1"
 				},
 				{
+					"name": "select1"
+				},
+				{
 					"name": "aggregate1"
 				}
 			],
@@ -38,7 +41,12 @@
 				"GetPropertyInspectionRawData filter((isNull(InspectionDueDate) && isNull(UnitIndex) && isNull(PropertyIndex) && isNull(InspectionType) && isNull(InspectionStatus))==false()) ~> RemoveEmtyRecords",
 				"RemoveEmtyRecords split(1==1,",
 				"     disjoint: false) ~> split1@(cond1, cond2)",
-				"split1@cond1 aggregate(groupBy(InspectionType)) ~> aggregate1"
+				"split1@cond1 select(mapColumn(",
+				"          InspectionType",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> select1",
+				"select1 aggregate() ~> aggregate1"
 			]
 		}
 	}
