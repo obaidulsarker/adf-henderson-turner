@@ -12,7 +12,11 @@
 					"name": "GetPropertyInspectionRawData"
 				}
 			],
-			"sinks": [],
+			"sinks": [
+				{
+					"name": "sink1"
+				}
+			],
 			"transformations": [
 				{
 					"name": "RemoveEmtyRecords"
@@ -47,7 +51,11 @@
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> select1",
 				"select1 aggregate(groupBy({} = ERROR_FUNCTION('')),",
-				"     InspectionType = ERROR_FUNCTION('')) ~> aggregate1"
+				"     InspectionType = ERROR_FUNCTION('')) ~> aggregate1",
+				"aggregate1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> sink1"
 			]
 		}
 	}
