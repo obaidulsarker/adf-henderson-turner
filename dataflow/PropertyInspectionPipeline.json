@@ -33,8 +33,8 @@
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> GetPropertyInspectionRawData",
 				"GetPropertyInspectionRawData filter((isNull(InspectionDueDate) && isNull(UnitIndex) && isNull(PropertyIndex) && isNull(InspectionType) && isNull(InspectionStatus))==false()) ~> RemoveEmtyRecords",
-				"RemoveEmtyRecords split(ERROR_FUNCTION(''),",
-				"     disjoint: false) ~> split1@(, )"
+				"RemoveEmtyRecords split(1==1,",
+				"     disjoint: false) ~> split1@(cond1, )"
 			]
 		}
 	}
