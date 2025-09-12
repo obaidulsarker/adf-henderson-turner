@@ -46,7 +46,8 @@
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> select1",
-				"select1 aggregate(groupBy({} = ERROR_FUNCTION(''))) ~> aggregate1"
+				"select1 aggregate(groupBy({} = ERROR_FUNCTION('')),",
+				"     InspectionType = ERROR_FUNCTION('')) ~> aggregate1"
 			]
 		}
 	}
