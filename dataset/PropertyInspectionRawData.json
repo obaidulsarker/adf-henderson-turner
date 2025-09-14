@@ -8,12 +8,13 @@
 		"annotations": [],
 		"type": "Excel",
 		"typeProperties": {
-			"sheetName": "property-inspection",
 			"location": {
 				"type": "AzureBlobStorageLocation",
 				"fileName": "property-inspection.xlsx",
+				"folderPath": "input",
 				"container": "propery-inspection-data"
 			},
+			"sheetIndex": 0,
 			"firstRowAsHeader": true
 		},
 		"schema": [
