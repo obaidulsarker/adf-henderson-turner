@@ -1,0 +1,91 @@
+{
+	"name": "PropertyRawExcelData",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ADLStorage_LinkService",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Excel",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "property-details.xlsx",
+				"folderPath": "input",
+				"container": "property"
+			},
+			"sheetIndex": 0,
+			"firstRowAsHeader": true
+		},
+		"schema": [
+			{
+				"name": "SnapshotDate",
+				"type": "String"
+			},
+			{
+				"name": "PropertyIndex",
+				"type": "String"
+			},
+			{
+				"name": "PropertyName",
+				"type": "String"
+			},
+			{
+				"name": "PropertyAddress",
+				"type": "String"
+			},
+			{
+				"name": "PropertyType",
+				"type": "String"
+			},
+			{
+				"name": "AcquisitionDate",
+				"type": "String"
+			},
+			{
+				"name": "OriginalPurchasePrice",
+				"type": "String"
+			},
+			{
+				"name": "Current MarketValue",
+				"type": "String"
+			},
+			{
+				"name": "CapitalExpenditures",
+				"type": "String"
+			},
+			{
+				"name": "InsuranceCosts",
+				"type": "String"
+			},
+			{
+				"name": "Occupancy",
+				"type": "String"
+			},
+			{
+				"name": "Taxes",
+				"type": "String"
+			},
+			{
+				"name": "DebtMortgageBalance",
+				"type": "String"
+			},
+			{
+				"name": "YearBuilt",
+				"type": "String"
+			},
+			{
+				"name": "SquareFootage",
+				"type": "String"
+			},
+			{
+				"name": "Neighborhood",
+				"type": "String"
+			},
+			{
+				"name": "TaxAssessmentValue",
+				"type": "String"
+			}
+		]
+	}
+}
