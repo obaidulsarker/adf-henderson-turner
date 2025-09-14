@@ -12,6 +12,10 @@
 					"name": "PropertySourceRawData"
 				},
 				{
+					"dataset": {
+						"referenceName": "PropertyType",
+						"type": "DatasetReference"
+					},
 					"name": "PropertyType"
 				}
 			],
@@ -51,8 +55,15 @@
 				"     validateSchema: false,",
 				"     inferDriftedColumnTypes: true,",
 				"     ignoreNoFilesFound: false) ~> PropertySourceRawData",
-				"source(allowSchemaDrift: true,",
-				"     validateSchema: false) ~> PropertyType",
+				"source(output(",
+				"          property_type_id as integer,",
+				"          property_type as string,",
+				"          last_updated_at as timestamp",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     isolationLevel: 'READ_UNCOMMITTED',",
+				"     format: 'table') ~> PropertyType",
 				"PropertySourceRawData select(mapColumn(",
 				"          property_type = PropertyType",
 				"     ),",
