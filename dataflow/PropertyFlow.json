@@ -77,7 +77,7 @@
 				"aggregate1, PropertyType exists(aggregate1@property_type == PropertyType@property_type,",
 				"     negate:false,",
 				"     broadcast: 'auto')~> exists1",
-				"exists1 derive() ~> CurrentTimeStamp"
+				"exists1 derive({} = ERROR_FUNCTION('')) ~> CurrentTimeStamp"
 			]
 		}
 	}
