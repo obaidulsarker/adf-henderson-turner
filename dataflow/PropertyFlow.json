@@ -19,6 +19,9 @@
 				},
 				{
 					"name": "aggregate1"
+				},
+				{
+					"name": "exists1"
 				}
 			],
 			"scriptLines": [
@@ -51,7 +54,10 @@
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> GetPropertyTypeColumn",
 				"GetPropertyTypeColumn aggregate(groupBy(property_type),",
-				"     property_type = ERROR_FUNCTION('')) ~> aggregate1"
+				"     property_type = ERROR_FUNCTION('')) ~> aggregate1",
+				"aggregate1 exists(ERROR_FUNCTION('') == ERROR_FUNCTION(''),",
+				"     negate:false,",
+				"     broadcast: 'auto')~> exists1"
 			]
 		}
 	}
