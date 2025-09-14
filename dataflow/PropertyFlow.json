@@ -15,7 +15,7 @@
 			"sinks": [],
 			"transformations": [
 				{
-					"name": "select1"
+					"name": "GetPropertyTypeColumn"
 				},
 				{
 					"name": "aggregate1"
@@ -49,8 +49,8 @@
 				"          property_type = PropertyType",
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> select1",
-				"select1 aggregate(groupBy(property_type)) ~> aggregate1"
+				"     skipDuplicateMapOutputs: true) ~> GetPropertyTypeColumn",
+				"GetPropertyTypeColumn aggregate(groupBy(property_type)) ~> aggregate1"
 			]
 		}
 	}
