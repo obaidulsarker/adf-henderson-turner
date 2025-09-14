@@ -3,8 +3,8 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "PropertyInspectionETL",
-				"type": "ExecuteDataFlow",
+				"name": "LoadPropertyInspectionStage",
+				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
 					"timeout": "0.12:00:00",
@@ -15,16 +15,46 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"dataflow": {
-						"referenceName": "PropertyInspectionPipeline",
-						"type": "DataFlowReference"
+					"source": {
+						"type": "ExcelSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true,
+							"wildcardFolderPath": "input",
+							"wildcardFileName": "property-inspection*.xlsx",
+							"enablePartitionDiscovery": false
+						}
 					},
-					"compute": {
-						"coreCount": 8,
-						"computeType": "General"
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "drop table if exists stg.property_inspection_raw;",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false,
+						"tableOption": "autoCreate",
+						"disableMetricsCollection": false
 					},
-					"traceLevel": "Fine"
-				}
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "PropertyInspectionRawData",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "PropertyStageTable",
+						"type": "DatasetReference"
+					}
+				]
 			}
 		],
 		"annotations": []
