@@ -72,7 +72,14 @@
 					"secureOutput": false,
 					"secureInput": false
 				},
-				"userProperties": []
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dw].[LoadPropertyData]"
+				},
+				"linkedServiceName": {
+					"referenceName": "AzureSqlDatabase2",
+					"type": "LinkedServiceReference"
+				}
 			}
 		],
 		"annotations": []
