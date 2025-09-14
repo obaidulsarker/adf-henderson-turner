@@ -50,7 +50,8 @@
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> GetPropertyTypeColumn",
-				"GetPropertyTypeColumn aggregate(groupBy(property_type)) ~> aggregate1"
+				"GetPropertyTypeColumn aggregate(groupBy(property_type),",
+				"     property_type = ERROR_FUNCTION('')) ~> aggregate1"
 			]
 		}
 	}
