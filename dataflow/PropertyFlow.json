@@ -16,6 +16,9 @@
 			"transformations": [
 				{
 					"name": "select1"
+				},
+				{
+					"name": "aggregate1"
 				}
 			],
 			"scriptLines": [
@@ -43,10 +46,11 @@
 				"     inferDriftedColumnTypes: true,",
 				"     ignoreNoFilesFound: false) ~> PropertySourceRawData",
 				"PropertySourceRawData select(mapColumn(",
-				"          PropertyType",
+				"          property_type = PropertyType",
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> select1"
+				"     skipDuplicateMapOutputs: true) ~> select1",
+				"select1 aggregate(groupBy(property_type)) ~> aggregate1"
 			]
 		}
 	}
