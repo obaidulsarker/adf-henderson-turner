@@ -10,6 +10,9 @@
 						"type": "DatasetReference"
 					},
 					"name": "PropertySourceRawData"
+				},
+				{
+					"name": "PropertyType"
 				}
 			],
 			"sinks": [],
@@ -48,6 +51,8 @@
 				"     validateSchema: false,",
 				"     inferDriftedColumnTypes: true,",
 				"     ignoreNoFilesFound: false) ~> PropertySourceRawData",
+				"source(allowSchemaDrift: true,",
+				"     validateSchema: false) ~> PropertyType",
 				"PropertySourceRawData select(mapColumn(",
 				"          property_type = PropertyType",
 				"     ),",
