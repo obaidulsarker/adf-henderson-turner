@@ -14,10 +14,6 @@
 			],
 			"sinks": [
 				{
-					"dataset": {
-						"referenceName": "PropertyInspectionStage",
-						"type": "DatasetReference"
-					},
 					"name": "SavePropertyInspectionStage"
 				}
 			],
@@ -40,15 +36,9 @@
 				"GetPropertyInspectionRawData filter((isNull(InspectionDueDate) && isNull(UnitIndex) && isNull(PropertyIndex) && isNull(InspectionType) && isNull(InspectionStatus))==false()) ~> RemoveEmtyRecords",
 				"RemoveEmtyRecords sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
-				"     deletable:false,",
-				"     insertable:true,",
-				"     updateable:false,",
-				"     upsertable:false,",
-				"     recreate:true,",
-				"     format: 'table',",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
-				"     errorHandlingOption: 'stopOnFirstError') ~> SavePropertyInspectionStage"
+				"     format: 'table') ~> SavePropertyInspectionStage"
 			]
 		}
 	}
