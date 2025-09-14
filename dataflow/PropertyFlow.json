@@ -15,7 +15,7 @@
 			"sinks": [],
 			"transformations": [
 				{
-					"name": "aggregate1"
+					"name": "select1"
 				}
 			],
 			"scriptLines": [
@@ -42,7 +42,27 @@
 				"     validateSchema: false,",
 				"     inferDriftedColumnTypes: true,",
 				"     ignoreNoFilesFound: false) ~> PropertySourceRawData",
-				"PropertySourceRawData aggregate() ~> aggregate1"
+				"PropertySourceRawData select(mapColumn(",
+				"          SnapshotDate,",
+				"          PropertyIndex,",
+				"          PropertyName,",
+				"          PropertyAddress,",
+				"          PropertyType,",
+				"          AcquisitionDate,",
+				"          OriginalPurchasePrice,",
+				"          {Current MarketValue},",
+				"          CapitalExpenditures,",
+				"          InsuranceCosts,",
+				"          Occupancy,",
+				"          Taxes,",
+				"          DebtMortgageBalance,",
+				"          YearBuilt,",
+				"          SquareFootage,",
+				"          Neighborhood,",
+				"          TaxAssessmentValue",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> select1"
 			]
 		}
 	}
