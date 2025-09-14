@@ -29,6 +29,9 @@
 				},
 				{
 					"name": "exists1"
+				},
+				{
+					"name": "CurrentTimeStamp"
 				}
 			],
 			"scriptLines": [
@@ -71,9 +74,10 @@
 				"     skipDuplicateMapOutputs: true) ~> GetPropertyTypeColumn",
 				"GetPropertyTypeColumn aggregate(groupBy(property_type),",
 				"     property_type = ERROR_FUNCTION('')) ~> aggregate1",
-				"aggregate1, PropertyType exists(aggregate1@property_type == ERROR_FUNCTION(''),",
+				"aggregate1, PropertyType exists(aggregate1@property_type == PropertyType@property_type,",
 				"     negate:false,",
-				"     broadcast: 'auto')~> exists1"
+				"     broadcast: 'auto')~> exists1",
+				"exists1 derive() ~> CurrentTimeStamp"
 			]
 		}
 	}
