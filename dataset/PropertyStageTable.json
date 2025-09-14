@@ -1,0 +1,85 @@
+{
+	"name": "PropertyStageTable",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabase2",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "Snapshot Date",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Property Index Value",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Property Name",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Property Address",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Property Type",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Acquisition Date",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Original Purchase Price",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Current Market Value",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Capital Expenditures",
+				"type": "nvarchar"
+			},
+			{
+				"name": "InsuranceCosts",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Occupancy",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Taxes",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Debt/Mortgage Balance",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Year Built",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Square Footage",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Neighborhood/Micro-Market",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Tax Assessment Value",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "stg",
+			"table": "property_details"
+		}
+	}
+}
