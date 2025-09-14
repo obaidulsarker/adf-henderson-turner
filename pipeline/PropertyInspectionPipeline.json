@@ -27,7 +27,7 @@
 					},
 					"sink": {
 						"type": "AzureSqlSink",
-						"preCopyScript": "drop table if exists stg.property_inspection_raw;",
+						"preCopyScript": "drop table if exists [stg].[property_inspection_raw];",
 						"writeBehavior": "insert",
 						"sqlWriterUseTableLock": false,
 						"tableOption": "autoCreate",
