@@ -20,12 +20,14 @@
 						"storeSettings": {
 							"type": "AzureBlobStorageReadSettings",
 							"recursive": true,
+							"wildcardFolderPath": "input",
+							"wildcardFileName": "unit-*.xlsx",
 							"enablePartitionDiscovery": false
 						}
 					},
 					"sink": {
 						"type": "AzureSqlSink",
-						"preCopyScript": "drop table if exists stg.",
+						"preCopyScript": "drop table if exists stg.unit_details;",
 						"writeBehavior": "insert",
 						"sqlWriterUseTableLock": false,
 						"tableOption": "autoCreate",
@@ -53,6 +55,33 @@
 						"type": "DatasetReference"
 					}
 				]
+			},
+			{
+				"name": "LoadUnitDimensionTable",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "CopyUnitRawData",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dw].[LoadUnitDetails]"
+				},
+				"linkedServiceName": {
+					"referenceName": "AzureSqlDatabase2",
+					"type": "LinkedServiceReference"
+				}
 			}
 		],
 		"annotations": []
