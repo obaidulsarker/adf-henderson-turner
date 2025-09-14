@@ -1,0 +1,71 @@
+{
+	"name": "UnitRawDataExcel",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ADLStorage_LinkService",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Excel",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "unit-details.xlsx",
+				"folderPath": "input",
+				"container": "unit"
+			},
+			"sheetIndex": 0,
+			"firstRowAsHeader": true
+		},
+		"schema": [
+			{
+				"name": "UnitIndex",
+				"type": "String"
+			},
+			{
+				"name": "PropertyIndex",
+				"type": "String"
+			},
+			{
+				"name": "UnitName",
+				"type": "String"
+			},
+			{
+				"name": "UnitType",
+				"type": "String"
+			},
+			{
+				"name": "Bedrooms",
+				"type": "String"
+			},
+			{
+				"name": "Bathrooms",
+				"type": "String"
+			},
+			{
+				"name": "SpaceSquareFootage",
+				"type": "String"
+			},
+			{
+				"name": "SecurityDeposit",
+				"type": "String"
+			},
+			{
+				"name": "MonthlyRent",
+				"type": "String"
+			},
+			{
+				"name": "Status",
+				"type": "String"
+			},
+			{
+				"name": "LeaseStartDate",
+				"type": "String"
+			},
+			{
+				"name": "LeaseEndDate",
+				"type": "String"
+			}
+		]
+	}
+}
