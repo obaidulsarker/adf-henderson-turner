@@ -1,5 +1,5 @@
 {
-	"name": "UnitDetailsRawPipeline",
+	"name": "PropertyUnitPipeline",
 	"properties": {
 		"activities": [
 			{
