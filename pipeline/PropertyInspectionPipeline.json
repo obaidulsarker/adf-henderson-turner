@@ -51,7 +51,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "PropertyStageTable",
+						"referenceName": "PropertyInspectionStage",
 						"type": "DatasetReference"
 					}
 				]
