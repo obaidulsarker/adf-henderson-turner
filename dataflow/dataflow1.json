@@ -154,7 +154,13 @@
 				"     format: 'table',",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
-				"     errorHandlingOption: 'stopOnFirstError') ~> LoadUnitDetails"
+				"     errorHandlingOption: 'stopOnFirstError',",
+				"     mapColumn(",
+				"          unit_index = UnitIndex,",
+				"          property_id,",
+				"          unit_name = UnitName,",
+				"          unit_type = UnitType",
+				"     )) ~> LoadUnitDetails"
 			]
 		}
 	}
