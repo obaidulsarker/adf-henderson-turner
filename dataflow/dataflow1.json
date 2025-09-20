@@ -43,7 +43,7 @@
 				"     ignoreNoFilesFound: false) ~> PropertyRawData",
 				"PropertyRawData split((isNull(PropertyIndex) && isNull(PropertyName) && isNull(PropertyType) && isNull(SnapshotDate) && isNull(AcquisitionDate))==false(),",
 				"     (isNull(PropertyIndex) && isNull(PropertyName) && isNull(PropertyType) && isNull(SnapshotDate) && isNull(AcquisitionDate))==true(),",
-				"     disjoint: true) ~> DataValidationSplit@(invalid, checkValidRecords, )"
+				"     disjoint: true) ~> DataValidationSplit@(valid, invalid)"
 			]
 		}
 	}
