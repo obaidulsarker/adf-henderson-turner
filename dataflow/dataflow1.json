@@ -5,14 +5,33 @@
 		"typeProperties": {
 			"sources": [
 				{
+					"dataset": {
+						"referenceName": "UnitRawDataExcel",
+						"type": "DatasetReference"
+					},
 					"name": "source1"
 				}
 			],
 			"sinks": [],
 			"transformations": [],
 			"scriptLines": [
-				"source(allowSchemaDrift: true,",
-				"     validateSchema: false) ~> source1"
+				"source(output(",
+				"          UnitIndex as string,",
+				"          PropertyIndex as string,",
+				"          UnitName as string,",
+				"          UnitType as string,",
+				"          Bedrooms as string,",
+				"          Bathrooms as string,",
+				"          SpaceSquareFootage as string,",
+				"          SecurityDeposit as string,",
+				"          MonthlyRent as string,",
+				"          Status as string,",
+				"          LeaseStartDate as string,",
+				"          LeaseEndDate as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> source1"
 			]
 		}
 	}
