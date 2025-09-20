@@ -5,14 +5,38 @@
 		"typeProperties": {
 			"sources": [
 				{
-					"name": "source1"
+					"dataset": {
+						"referenceName": "PropertyRawExcelData",
+						"type": "DatasetReference"
+					},
+					"name": "PropertyRawData"
 				}
 			],
 			"sinks": [],
 			"transformations": [],
 			"scriptLines": [
-				"source(allowSchemaDrift: true,",
-				"     validateSchema: false) ~> source1"
+				"source(output(",
+				"          SnapshotDate as string,",
+				"          PropertyIndex as string,",
+				"          PropertyName as string,",
+				"          PropertyAddress as string,",
+				"          PropertyType as string,",
+				"          AcquisitionDate as string,",
+				"          OriginalPurchasePrice as string,",
+				"          {Current MarketValue} as string,",
+				"          CapitalExpenditures as string,",
+				"          InsuranceCosts as string,",
+				"          Occupancy as string,",
+				"          Taxes as string,",
+				"          DebtMortgageBalance as string,",
+				"          YearBuilt as string,",
+				"          SquareFootage as string,",
+				"          Neighborhood as string,",
+				"          TaxAssessmentValue as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> PropertyRawData"
 			]
 		}
 	}
