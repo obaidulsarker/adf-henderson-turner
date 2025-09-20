@@ -9,7 +9,7 @@
 						"referenceName": "UnitRawDataExcel",
 						"type": "DatasetReference"
 					},
-					"name": "source1"
+					"name": "GetUnitRawData"
 				}
 			],
 			"sinks": [],
@@ -31,7 +31,7 @@
 				"     ),",
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
-				"     ignoreNoFilesFound: false) ~> source1"
+				"     ignoreNoFilesFound: false) ~> GetUnitRawData"
 			]
 		}
 	}
