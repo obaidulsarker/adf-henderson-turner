@@ -13,7 +13,11 @@
 				}
 			],
 			"sinks": [],
-			"transformations": [],
+			"transformations": [
+				{
+					"name": "split1"
+				}
+			],
 			"scriptLines": [
 				"source(output(",
 				"          SnapshotDate as string,",
@@ -36,7 +40,9 @@
 				"     ),",
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
-				"     ignoreNoFilesFound: false) ~> PropertyRawData"
+				"     ignoreNoFilesFound: false) ~> PropertyRawData",
+				"PropertyRawData split(ERROR_FUNCTION(''),",
+				"     disjoint: true) ~> split1@(heckMandatoryField, )"
 			]
 		}
 	}
