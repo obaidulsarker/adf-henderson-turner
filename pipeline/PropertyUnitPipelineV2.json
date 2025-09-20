@@ -1,9 +1,9 @@
 {
-	"name": "pipeline1",
+	"name": "PropertyUnitPipelineV2",
 	"properties": {
 		"activities": [
 			{
-				"name": "Data flow1",
+				"name": "UnitInfoDataflow",
 				"type": "ExecuteDataFlow",
 				"dependsOn": [],
 				"policy": {
