@@ -159,7 +159,12 @@
 				"          unit_index = UnitIndex,",
 				"          property_id,",
 				"          unit_name = UnitName,",
-				"          unit_type = UnitType",
+				"          unit_type = UnitType,",
+				"          number_of_bedrooms = Bathrooms,",
+				"          number_of_bathrooms = Bathrooms,",
+				"          unit_area = SpaceSquareFootage,",
+				"          secuirty_deposit = MonthlyRent,",
+				"          monthly_rent = MonthlyRent",
 				"     )) ~> LoadUnitDetails"
 			]
 		}
