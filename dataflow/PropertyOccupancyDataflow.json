@@ -13,11 +13,17 @@
 				}
 			],
 			"sinks": [],
-			"transformations": [],
+			"transformations": [
+				{
+					"name": "split1"
+				}
+			],
 			"scriptLines": [
 				"source(allowSchemaDrift: true,",
 				"     validateSchema: false,",
-				"     ignoreNoFilesFound: false) ~> GetPropertyOccupancyRawData"
+				"     ignoreNoFilesFound: false) ~> GetPropertyOccupancyRawData",
+				"GetPropertyOccupancyRawData split(ERROR_FUNCTION(''),",
+				"     disjoint: false) ~> split1@(ValidRecords, InvalidRecords)"
 			]
 		}
 	}
