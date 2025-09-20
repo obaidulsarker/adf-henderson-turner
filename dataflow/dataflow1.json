@@ -12,7 +12,11 @@
 					"name": "PropertyRawData"
 				}
 			],
-			"sinks": [],
+			"sinks": [
+				{
+					"name": "sink1"
+				}
+			],
 			"transformations": [
 				{
 					"name": "DataValidationSplit"
@@ -48,7 +52,12 @@
 				"     (isNull(PropertyIndex) && isNull(PropertyName) && isNull(PropertyType) && isNull(SnapshotDate) && isNull(AcquisitionDate))==true(),",
 				"     disjoint: true) ~> DataValidationSplit@(valid, invalid)",
 				"DataValidationSplit@valid split((isDate(SnapshotDate, 'DD-MM-YYYY') && isDate(AcquisitionDate, 'DD-MM-YYYY'))==false(),",
-				"     disjoint: false) ~> checkDateValidation@(isValidSpnapshootAndAcquisitionDate, isInvalidSnapshootAnd)"
+				"     (isDate(SnapshotDate, 'DD-MM-YYYY') && isDate(AcquisitionDate, 'DD-MM-YYYY'))==true(),",
+				"     disjoint: false) ~> checkDateValidation@(isValidSnapshootAndAcquisitionDate, isInvalidSnapshootAndAcquisiionDate)",
+				"checkDateValidation@isValidSnapshootAndAcquisitionDate sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> sink1"
 			]
 		}
 	}
