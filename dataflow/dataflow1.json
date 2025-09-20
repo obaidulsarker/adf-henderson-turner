@@ -76,8 +76,8 @@
 				"     multiple: false,",
 				"     pickup: 'any',",
 				"     broadcast: 'auto')~> FindPropertyIndex",
-				"FindPropertyIndex split(ERROR_FUNCTION(''),",
-				"     disjoint: false) ~> CheckValidProperty@(hasProperty, )"
+				"FindPropertyIndex split(isNull(property_id)==false(),",
+				"     disjoint: false) ~> CheckValidProperty@(hasProperty, notValidProperty)"
 			]
 		}
 	}
