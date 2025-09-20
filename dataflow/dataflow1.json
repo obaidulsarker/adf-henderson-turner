@@ -13,7 +13,11 @@
 				}
 			],
 			"sinks": [],
-			"transformations": [],
+			"transformations": [
+				{
+					"name": "split1"
+				}
+			],
 			"scriptLines": [
 				"source(output(",
 				"          UnitIndex as string,",
@@ -31,7 +35,9 @@
 				"     ),",
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
-				"     ignoreNoFilesFound: false) ~> GetUnitRawData"
+				"     ignoreNoFilesFound: false) ~> GetUnitRawData",
+				"GetUnitRawData split(ERROR_FUNCTION(''),",
+				"     disjoint: false) ~> split1@(check, )"
 			]
 		}
 	}
