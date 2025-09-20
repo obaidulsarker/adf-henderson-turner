@@ -18,7 +18,7 @@
 					"name": "DataValidationSplit"
 				},
 				{
-					"name": "split1"
+					"name": "checkDateValidation"
 				}
 			],
 			"scriptLines": [
@@ -48,7 +48,7 @@
 				"     (isNull(PropertyIndex) && isNull(PropertyName) && isNull(PropertyType) && isNull(SnapshotDate) && isNull(AcquisitionDate))==true(),",
 				"     disjoint: true) ~> DataValidationSplit@(valid, invalid)",
 				"DataValidationSplit@valid split(ERROR_FUNCTION(''),",
-				"     disjoint: false) ~> split1@(, )"
+				"     disjoint: false) ~> checkDateValidation@(isValidSpnapshootAndAcquisitionDate, )"
 			]
 		}
 	}
