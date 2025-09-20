@@ -28,6 +28,10 @@
 					"name": "LoadInvalidUnitIndex"
 				},
 				{
+					"dataset": {
+						"referenceName": "dimUnitDetails",
+						"type": "DatasetReference"
+					},
 					"name": "LoadUnitDetails"
 				}
 			],
@@ -127,8 +131,30 @@
 				"     skipDuplicateMapOutputs: true) ~> LoadInvalidUnitIndex",
 				"CheckValidProperty@hasProperty sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
+				"     input(",
+				"          unit_id as integer,",
+				"          unit_index as string,",
+				"          property_id as integer,",
+				"          unit_name as string,",
+				"          unit_type as string,",
+				"          number_of_bedrooms as integer,",
+				"          number_of_bathrooms as integer,",
+				"          unit_area as integer,",
+				"          secuirty_deposit as integer,",
+				"          monthly_rent as integer,",
+				"          unit_status as string,",
+				"          lease_start_date as timestamp,",
+				"          lease_end_date as timestamp,",
+				"          last_updated_at as timestamp",
+				"     ),",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'table',",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> LoadUnitDetails"
+				"     skipDuplicateMapOutputs: true,",
+				"     errorHandlingOption: 'stopOnFirstError') ~> LoadUnitDetails"
 			]
 		}
 	}

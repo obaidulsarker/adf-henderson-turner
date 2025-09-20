@@ -1,0 +1,86 @@
+{
+	"name": "dimUnitDetails",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabase2",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "unit_id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "unit_index",
+				"type": "varchar"
+			},
+			{
+				"name": "property_id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "unit_name",
+				"type": "varchar"
+			},
+			{
+				"name": "unit_type",
+				"type": "varchar"
+			},
+			{
+				"name": "number_of_bedrooms",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "number_of_bathrooms",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "unit_area",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "secuirty_deposit",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "monthly_rent",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "unit_status",
+				"type": "varchar"
+			},
+			{
+				"name": "lease_start_date",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "lease_end_date",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "last_updated_at",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			}
+		],
+		"typeProperties": {
+			"schema": "dw",
+			"table": "dim_unit"
+		}
+	}
+}
