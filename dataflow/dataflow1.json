@@ -35,6 +35,9 @@
 				},
 				{
 					"name": "ErrorReason2"
+				},
+				{
+					"name": "union1"
 				}
 			],
 			"scriptLines": [
@@ -85,7 +88,8 @@
 				"FindPropertyIndex split(isNull(property_id)==false(),",
 				"     disjoint: false) ~> CheckValidProperty@(hasProperty, notValidProperty)",
 				"CheckValidProperty@notValidProperty derive(error_reason = 'Invalid Property Index') ~> ErrorReason",
-				"split1@isInvalid derive(error_reason = ERROR_FUNCTION('')) ~> ErrorReason2"
+				"split1@isInvalid derive(error_reason = 'Mandatory columns are empty') ~> ErrorReason2",
+				"ErrorReason2, ErrorReason union(byName: true)~> union1"
 			]
 		}
 	}
