@@ -41,8 +41,9 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> PropertyRawData",
-				"PropertyRawData split(isNull(PropertyIndex) && isNull(PropertyName) && isNull(PropertyType) && isNull(SnapshotDate) && isNull(AcquisitionDate),",
-				"     disjoint: true) ~> DataValidationSplit@(CheckMandatoryField, )"
+				"PropertyRawData split((isNull(PropertyIndex) && isNull(PropertyName) && isNull(PropertyType) && isNull(SnapshotDate) && isNull(AcquisitionDate))==false(),",
+				"     ERROR_FUNCTION(''),",
+				"     disjoint: true) ~> DataValidationSplit@(CheckMandatoryField, , )"
 			]
 		}
 	}
