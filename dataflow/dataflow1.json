@@ -36,7 +36,7 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> GetUnitRawData",
-				"GetUnitRawData split(ERROR_FUNCTION(''),",
+				"GetUnitRawData split((isNull(UnitIndex) && isNull(UnitName) && isNull(PropertyIndex) && isNull(UnitType) && isNull(Status) && isDate(LeaseStartDate,'DD-MMM-YYYY') && isDate(LeaseEndDate,'DD-MMM-YYYY'))==false(),",
 				"     disjoint: false) ~> split1@(IsValid, isInvalid)"
 			]
 		}
