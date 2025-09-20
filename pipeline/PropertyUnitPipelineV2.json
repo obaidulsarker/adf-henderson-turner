@@ -27,7 +27,7 @@
 				}
 			},
 			{
-				"name": "Stored procedure1",
+				"name": "LoadDimUnitDetails",
 				"type": "SqlServerStoredProcedure",
 				"dependsOn": [
 					{
@@ -45,6 +45,9 @@
 					"secureInput": false
 				},
 				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dw].[LoadUnitDetails]"
+				},
 				"linkedServiceName": {
 					"referenceName": "AzureSqlDatabase2",
 					"type": "LinkedServiceReference"
