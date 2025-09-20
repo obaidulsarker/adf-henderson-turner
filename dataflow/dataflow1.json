@@ -69,7 +69,7 @@
 				"     format: 'table') ~> GetPropertyDetails",
 				"GetUnitRawData split((isNull(UnitIndex) && isNull(UnitName) && isNull(PropertyIndex) && isNull(UnitType) && isNull(Status) && isDate(LeaseStartDate,'DD-MMM-YYYY') && isDate(LeaseEndDate,'DD-MMM-YYYY'))==false(),",
 				"     disjoint: false) ~> split1@(IsValid, isInvalid)",
-				"split1@IsValid, GetPropertyDetails lookup(ERROR_FUNCTION('') == ERROR_FUNCTION(''),",
+				"split1@IsValid, GetPropertyDetails lookup(PropertyIndex == property_index,",
 				"     multiple: false,",
 				"     pickup: 'any',",
 				"     broadcast: 'auto')~> FindPropertyIndex"
