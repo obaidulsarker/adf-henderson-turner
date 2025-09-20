@@ -10,6 +10,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
+				"fileName": "property-occupany.xlsx",
 				"folderPath": "input",
 				"container": "propery-ocupancy-data"
 			},
