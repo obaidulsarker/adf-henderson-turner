@@ -16,6 +16,9 @@
 			"transformations": [
 				{
 					"name": "DataValidationSplit"
+				},
+				{
+					"name": "split1"
 				}
 			],
 			"scriptLines": [
@@ -43,7 +46,9 @@
 				"     ignoreNoFilesFound: false) ~> PropertyRawData",
 				"PropertyRawData split((isNull(PropertyIndex) && isNull(PropertyName) && isNull(PropertyType) && isNull(SnapshotDate) && isNull(AcquisitionDate))==false(),",
 				"     (isNull(PropertyIndex) && isNull(PropertyName) && isNull(PropertyType) && isNull(SnapshotDate) && isNull(AcquisitionDate))==true(),",
-				"     disjoint: true) ~> DataValidationSplit@(valid, invalid)"
+				"     disjoint: true) ~> DataValidationSplit@(valid, invalid)",
+				"DataValidationSplit@valid split(ERROR_FUNCTION(''),",
+				"     disjoint: false) ~> split1@(, )"
 			]
 		}
 	}
