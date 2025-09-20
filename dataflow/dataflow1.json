@@ -27,6 +27,9 @@
 				},
 				{
 					"name": "checkDateValidation"
+				},
+				{
+					"name": "union1"
 				}
 			],
 			"scriptLines": [
@@ -58,6 +61,7 @@
 				"DataValidationSplit@valid split((isDate(SnapshotDate, 'DD-MM-YYYY') && isDate(AcquisitionDate, 'DD-MM-YYYY'))==false(),",
 				"     (isDate(SnapshotDate, 'DD-MM-YYYY') && isDate(AcquisitionDate, 'DD-MM-YYYY'))==true(),",
 				"     disjoint: false) ~> checkDateValidation@(isValidSnapshootAndAcquisitionDate, isInvalidSnapshootAndAcquisiionDate)",
+				"DataValidationSplit@invalid, checkDateValidation@isInvalidSnapshootAndAcquisiionDate union(byName: true)~> union1",
 				"checkDateValidation@isValidSnapshootAndAcquisitionDate sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     input(",
