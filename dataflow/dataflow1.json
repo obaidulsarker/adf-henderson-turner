@@ -41,8 +41,8 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> PropertyRawData",
-				"PropertyRawData split(ERROR_FUNCTION(''),",
-				"     disjoint: true) ~> split1@(heckMandatoryField, )"
+				"PropertyRawData split(isNull(PropertyIndex) && isNull(PropertyName) && isNull(PropertyType) && isNull(SnapshotDate) && isNull(AcquisitionDate),",
+				"     disjoint: true) ~> split1@(CheckMandatoryField, )"
 			]
 		}
 	}
