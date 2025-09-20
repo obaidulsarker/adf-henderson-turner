@@ -19,7 +19,11 @@
 					"name": "GetPropertyDetails"
 				}
 			],
-			"sinks": [],
+			"sinks": [
+				{
+					"name": "LoadInvalidUnitIndex"
+				}
+			],
 			"transformations": [
 				{
 					"name": "split1"
@@ -108,7 +112,11 @@
 				"          LeaseEndDate",
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> select2"
+				"     skipDuplicateMapOutputs: true) ~> select2",
+				"union1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> LoadInvalidUnitIndex"
 			]
 		}
 	}
