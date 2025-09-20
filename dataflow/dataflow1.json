@@ -32,6 +32,9 @@
 				},
 				{
 					"name": "ErrorReason"
+				},
+				{
+					"name": "derivedColumn1"
 				}
 			],
 			"scriptLines": [
@@ -81,7 +84,8 @@
 				"     broadcast: 'auto')~> FindPropertyIndex",
 				"FindPropertyIndex split(isNull(property_id)==false(),",
 				"     disjoint: false) ~> CheckValidProperty@(hasProperty, notValidProperty)",
-				"CheckValidProperty@notValidProperty derive(error_reason = ERROR_FUNCTION('')) ~> ErrorReason"
+				"CheckValidProperty@notValidProperty derive(error_reason = 'Invalid Property Index') ~> ErrorReason",
+				"split1@isInvalid derive() ~> derivedColumn1"
 			]
 		}
 	}
