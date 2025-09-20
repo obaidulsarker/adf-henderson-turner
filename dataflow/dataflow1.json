@@ -21,7 +21,14 @@
 			],
 			"sinks": [
 				{
+					"dataset": {
+						"referenceName": "InvalidUnitDetailsData",
+						"type": "DatasetReference"
+					},
 					"name": "LoadInvalidUnitIndex"
+				},
+				{
+					"name": "LoadUnitDetailsStage"
 				}
 			],
 			"transformations": [
@@ -116,7 +123,11 @@
 				"union1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> LoadInvalidUnitIndex"
+				"     skipDuplicateMapOutputs: true) ~> LoadInvalidUnitIndex",
+				"CheckValidProperty@hasProperty sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> LoadUnitDetailsStage"
 			]
 		}
 	}
