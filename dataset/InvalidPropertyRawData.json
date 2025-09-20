@@ -1,0 +1,24 @@
+{
+	"name": "InvalidPropertyRawData",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ADLStorage_LinkService",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "invalid-property-details.csv",
+				"folderPath": "property",
+				"container": "invalid-data"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}

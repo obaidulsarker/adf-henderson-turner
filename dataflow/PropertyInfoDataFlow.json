@@ -1,5 +1,5 @@
 {
-	"name": "dataflow1",
+	"name": "PropertyInfoDataFlow",
 	"properties": {
 		"type": "MappingDataFlow",
 		"typeProperties": {
@@ -21,7 +21,11 @@
 					"name": "LoadPropertyStage"
 				},
 				{
-					"name": "LoadInvalidPropertyIntoExcel"
+					"dataset": {
+						"referenceName": "InvalidPropertyRawData",
+						"type": "DatasetReference"
+					},
+					"name": "LoadInvalidPropertyIntoCSV"
 				}
 			],
 			"transformations": [
@@ -97,7 +101,7 @@
 				"InValid sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> LoadInvalidPropertyIntoExcel"
+				"     skipDuplicateMapOutputs: true) ~> LoadInvalidPropertyIntoCSV"
 			]
 		}
 	}
