@@ -81,7 +81,7 @@
 				"     broadcast: 'auto')~> FindPropertyIndex",
 				"FindPropertyIndex split(isNull(property_id)==false(),",
 				"     disjoint: false) ~> CheckValidProperty@(hasProperty, notValidProperty)",
-				"CheckValidProperty@notValidProperty derive({} = ERROR_FUNCTION('')) ~> ErrorReason"
+				"CheckValidProperty@notValidProperty derive(error_reason = ERROR_FUNCTION('')) ~> ErrorReason"
 			]
 		}
 	}
