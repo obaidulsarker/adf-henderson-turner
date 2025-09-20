@@ -163,8 +163,11 @@
 				"          number_of_bedrooms = Bathrooms,",
 				"          number_of_bathrooms = Bathrooms,",
 				"          unit_area = SpaceSquareFootage,",
-				"          secuirty_deposit = MonthlyRent,",
-				"          monthly_rent = MonthlyRent",
+				"          secuirty_deposit = SecurityDeposit,",
+				"          monthly_rent = MonthlyRent,",
+				"          unit_status = Status,",
+				"          lease_start_date = LeaseStartDate,",
+				"          lease_end_date = LeaseEndDate",
 				"     )) ~> LoadUnitDetails"
 			]
 		}
