@@ -26,6 +26,9 @@
 						"type": "DatasetReference"
 					},
 					"name": "LoadInvalidUnitIndex"
+				},
+				{
+					"name": "LoadUnitDetails"
 				}
 			],
 			"transformations": [
@@ -121,7 +124,11 @@
 				"union1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> LoadInvalidUnitIndex"
+				"     skipDuplicateMapOutputs: true) ~> LoadInvalidUnitIndex",
+				"CheckValidProperty@hasProperty sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> LoadUnitDetails"
 			]
 		}
 	}
