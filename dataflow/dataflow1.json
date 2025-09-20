@@ -32,7 +32,7 @@
 					"name": "checkDateValidation"
 				},
 				{
-					"name": "union1"
+					"name": "In"
 				}
 			],
 			"scriptLines": [
@@ -64,7 +64,7 @@
 				"DataValidationSplit@valid split((isDate(SnapshotDate, 'DD-MM-YYYY') && isDate(AcquisitionDate, 'DD-MM-YYYY'))==false(),",
 				"     (isDate(SnapshotDate, 'DD-MM-YYYY') && isDate(AcquisitionDate, 'DD-MM-YYYY'))==true(),",
 				"     disjoint: false) ~> checkDateValidation@(ValidSnapshootAndAcquisitionDate, InvalidSnapshootAndAcquisiionDate)",
-				"DataValidationSplit@invalid, checkDateValidation@InvalidSnapshootAndAcquisiionDate union(byName: true)~> union1",
+				"DataValidationSplit@invalid, checkDateValidation@InvalidSnapshootAndAcquisiionDate union(byName: true)~> In",
 				"checkDateValidation@ValidSnapshootAndAcquisitionDate sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     input(",
@@ -94,7 +94,7 @@
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
 				"     errorHandlingOption: 'stopOnFirstError') ~> LoadPropertyStage",
-				"union1 sink(allowSchemaDrift: true,",
+				"In sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> LoadInvalidPropertyIntoExcel"
