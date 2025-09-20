@@ -14,7 +14,11 @@
 			],
 			"sinks": [
 				{
-					"name": "sink1"
+					"dataset": {
+						"referenceName": "PropertyStageTable",
+						"type": "DatasetReference"
+					},
+					"name": "LoadPropertyStage"
 				}
 			],
 			"transformations": [
@@ -56,8 +60,33 @@
 				"     disjoint: false) ~> checkDateValidation@(isValidSnapshootAndAcquisitionDate, isInvalidSnapshootAndAcquisiionDate)",
 				"checkDateValidation@isValidSnapshootAndAcquisitionDate sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
+				"     input(",
+				"          {Snapshot Date} as string,",
+				"          {Property Index Value} as string,",
+				"          {Property Name} as string,",
+				"          {Property Address} as string,",
+				"          {Property Type} as string,",
+				"          {Acquisition Date} as string,",
+				"          {Original Purchase Price} as string,",
+				"          {Current Market Value} as string,",
+				"          {Capital Expenditures} as string,",
+				"          InsuranceCosts as string,",
+				"          Occupancy as string,",
+				"          Taxes as string,",
+				"          {Debt/Mortgage Balance} as string,",
+				"          {Year Built} as string,",
+				"          {Square Footage} as string,",
+				"          {Neighborhood/Micro-Market} as string,",
+				"          {Tax Assessment Value} as string",
+				"     ),",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'table',",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> sink1"
+				"     skipDuplicateMapOutputs: true,",
+				"     errorHandlingOption: 'stopOnFirstError') ~> LoadPropertyStage"
 			]
 		}
 	}
