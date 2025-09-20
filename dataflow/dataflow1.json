@@ -19,6 +19,9 @@
 						"type": "DatasetReference"
 					},
 					"name": "LoadPropertyStage"
+				},
+				{
+					"name": "LoadInvalidPropertyIntoExcel"
 				}
 			],
 			"transformations": [
@@ -90,7 +93,11 @@
 				"     format: 'table',",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
-				"     errorHandlingOption: 'stopOnFirstError') ~> LoadPropertyStage"
+				"     errorHandlingOption: 'stopOnFirstError') ~> LoadPropertyStage",
+				"union1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> LoadInvalidPropertyIntoExcel"
 			]
 		}
 	}
