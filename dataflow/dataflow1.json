@@ -12,6 +12,10 @@
 					"name": "GetUnitRawData"
 				},
 				{
+					"dataset": {
+						"referenceName": "dim_property",
+						"type": "DatasetReference"
+					},
 					"name": "GetPropertyDetails"
 				}
 			],
@@ -42,11 +46,30 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> GetUnitRawData",
-				"source(allowSchemaDrift: true,",
-				"     validateSchema: false) ~> GetPropertyDetails",
+				"source(output(",
+				"          property_id as integer,",
+				"          property_name as string,",
+				"          property_index as string,",
+				"          property_type_id as integer,",
+				"          property_address as string,",
+				"          aquisition_date as date,",
+				"          original_purchase_date as date,",
+				"          current_merket_value as decimal(10,2),",
+				"          capital_expendition as decimal(10,2),",
+				"          insurance_cost as decimal(10,2),",
+				"          tax_amount as decimal(10,2),",
+				"          built_year as integer,",
+				"          square_footage as integer,",
+				"          mortage_balance as decimal(10,2),",
+				"          last_updated_at as timestamp",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     isolationLevel: 'READ_UNCOMMITTED',",
+				"     format: 'table') ~> GetPropertyDetails",
 				"GetUnitRawData split((isNull(UnitIndex) && isNull(UnitName) && isNull(PropertyIndex) && isNull(UnitType) && isNull(Status) && isDate(LeaseStartDate,'DD-MMM-YYYY') && isDate(LeaseEndDate,'DD-MMM-YYYY'))==false(),",
 				"     disjoint: false) ~> split1@(IsValid, isInvalid)",
-				"split1@IsValid lookup(ERROR_FUNCTION('') == ERROR_FUNCTION(''),",
+				"split1@IsValid, GetPropertyDetails lookup(ERROR_FUNCTION('') == ERROR_FUNCTION(''),",
 				"     multiple: false,",
 				"     pickup: 'any',",
 				"     broadcast: 'auto')~> FindPropertyIndex"

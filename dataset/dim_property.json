@@ -1,0 +1,93 @@
+{
+	"name": "dim_property",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabase2",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "property_id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "property_name",
+				"type": "varchar"
+			},
+			{
+				"name": "property_index",
+				"type": "varchar"
+			},
+			{
+				"name": "property_type_id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "property_address",
+				"type": "varchar"
+			},
+			{
+				"name": "aquisition_date",
+				"type": "date"
+			},
+			{
+				"name": "original_purchase_date",
+				"type": "date"
+			},
+			{
+				"name": "current_merket_value",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 2
+			},
+			{
+				"name": "capital_expendition",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 2
+			},
+			{
+				"name": "insurance_cost",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 2
+			},
+			{
+				"name": "tax_amount",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 2
+			},
+			{
+				"name": "built_year",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "square_footage",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "mortage_balance",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 2
+			},
+			{
+				"name": "last_updated_at",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			}
+		],
+		"typeProperties": {
+			"schema": "dw",
+			"table": "dim_property"
+		}
+	}
+}
