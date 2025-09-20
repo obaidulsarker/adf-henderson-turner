@@ -47,8 +47,8 @@
 				"PropertyRawData split((isNull(PropertyIndex) && isNull(PropertyName) && isNull(PropertyType) && isNull(SnapshotDate) && isNull(AcquisitionDate))==false(),",
 				"     (isNull(PropertyIndex) && isNull(PropertyName) && isNull(PropertyType) && isNull(SnapshotDate) && isNull(AcquisitionDate))==true(),",
 				"     disjoint: true) ~> DataValidationSplit@(valid, invalid)",
-				"DataValidationSplit@valid split(ERROR_FUNCTION(''),",
-				"     disjoint: false) ~> checkDateValidation@(isValidSpnapshootAndAcquisitionDate, )"
+				"DataValidationSplit@valid split((isDate(SnapshotDate, 'DD-MM-YYYY') && isDate(AcquisitionDate, 'DD-MM-YYYY'))==false(),",
+				"     disjoint: false) ~> checkDateValidation@(isValidSpnapshootAndAcquisitionDate, isInvalidSnapshootAnd)"
 			]
 		}
 	}
