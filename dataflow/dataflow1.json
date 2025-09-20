@@ -16,6 +16,9 @@
 			"transformations": [
 				{
 					"name": "split1"
+				},
+				{
+					"name": "FindPropertyIndex"
 				}
 			],
 			"scriptLines": [
@@ -37,7 +40,11 @@
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> GetUnitRawData",
 				"GetUnitRawData split((isNull(UnitIndex) && isNull(UnitName) && isNull(PropertyIndex) && isNull(UnitType) && isNull(Status) && isDate(LeaseStartDate,'DD-MMM-YYYY') && isDate(LeaseEndDate,'DD-MMM-YYYY'))==false(),",
-				"     disjoint: false) ~> split1@(IsValid, isInvalid)"
+				"     disjoint: false) ~> split1@(IsValid, isInvalid)",
+				"split1@IsValid lookup(ERROR_FUNCTION('') == ERROR_FUNCTION(''),",
+				"     multiple: false,",
+				"     pickup: 'any',",
+				"     broadcast: 'auto')~> FindPropertyIndex"
 			]
 		}
 	}
