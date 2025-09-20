@@ -37,7 +37,7 @@
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> GetUnitRawData",
 				"GetUnitRawData split(ERROR_FUNCTION(''),",
-				"     disjoint: false) ~> split1@(check, )"
+				"     disjoint: false) ~> split1@(IsValid, isInvalid)"
 			]
 		}
 	}
