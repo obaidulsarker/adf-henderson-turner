@@ -33,7 +33,7 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> source1",
-				"source1 split(ERROR_FUNCTION(''),",
+				"source1 split((isNull(UnitIndex) && isNull(PropertyIndex) && isNull(TenantCode) && isNull(TenantName) && isNull(OccupancyStartDate) && isNull(OccupancyStatus) && isDate(OccupancyStartDate, 'DD-MMM-YYYY') )==false(),",
 				"     disjoint: false) ~> split1@(valid, invalid)"
 			]
 		}
