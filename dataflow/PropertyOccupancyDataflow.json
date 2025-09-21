@@ -23,6 +23,9 @@
 			"transformations": [
 				{
 					"name": "split1"
+				},
+				{
+					"name": "lookup1"
 				}
 			],
 			"scriptLines": [
@@ -61,7 +64,11 @@
 				"     isolationLevel: 'READ_UNCOMMITTED',",
 				"     format: 'table') ~> GetUnitInfo",
 				"source1 split((isNull(UnitIndex) && isNull(PropertyIndex) && isNull(TenantCode) && isNull(TenantName) && isNull(OccupancyStartDate) && isNull(OccupancyStatus) && isDate(OccupancyStartDate, 'DD-MMM-YYYY') )==false(),",
-				"     disjoint: false) ~> split1@(valid, invalid)"
+				"     disjoint: false) ~> split1@(valid, invalid)",
+				"split1@valid, GetUnitInfo lookup(UnitIndex == unit_index,",
+				"     multiple: false,",
+				"     pickup: 'any',",
+				"     broadcast: 'auto')~> lookup1"
 			]
 		}
 	}
