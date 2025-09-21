@@ -27,7 +27,7 @@
 				}
 			},
 			{
-				"name": "Stored procedure1",
+				"name": "LoadPropertyInspectionFact",
 				"type": "SqlServerStoredProcedure",
 				"dependsOn": [
 					{
