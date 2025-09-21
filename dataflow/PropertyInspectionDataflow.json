@@ -132,7 +132,7 @@
 				"lookupInspectionType split(isNull(inspection_type_id)==false(),",
 				"     disjoint: false) ~> split2@(validInspectionType, invalidInspectionType)",
 				"split2@invalidInspectionType derive(error_column = 'Invalid Property Inspection Type') ~> ErrorReason1",
-				"lookupUnit split(ERROR_FUNCTION(''),",
+				"lookupUnit split(isNull(unit_id)==false(),",
 				"     disjoint: false) ~> split3@(validUnit, invalidUnit)",
 				"split2@validInspectionType, GetUnitInfo lookup(UnitIndex == unit_index,",
 				"     multiple: false,",
