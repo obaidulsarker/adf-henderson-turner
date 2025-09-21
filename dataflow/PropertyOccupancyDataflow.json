@@ -52,6 +52,9 @@
 				},
 				{
 					"name": "ErrorReason"
+				},
+				{
+					"name": "ErrorReason2"
 				}
 			],
 			"scriptLines": [
@@ -124,7 +127,7 @@
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> select2",
-				"split1@invalid, GetUnitInfo union(byName: true)~> union1",
+				"ErrorReason2, GetUnitInfo union(byName: true)~> union1",
 				"union1 select(mapColumn(",
 				"          UnitIndex,",
 				"          PropertyIndex,",
@@ -139,6 +142,7 @@
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> select3",
 				"split2@invalidUnit derive(error_reason = 'Invalid Unit Index Value') ~> ErrorReason",
+				"split1@invalid derive(error_reason = ERROR_FUNCTION('')) ~> ErrorReason2",
 				"select2 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     deletable:false,",
