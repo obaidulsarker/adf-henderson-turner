@@ -9,7 +9,7 @@
 						"referenceName": "OccupanyExcelData",
 						"type": "DatasetReference"
 					},
-					"name": "GetPropertyOccupancyRawData"
+					"name": "source1"
 				}
 			],
 			"sinks": [],
@@ -17,7 +17,7 @@
 			"scriptLines": [
 				"source(allowSchemaDrift: true,",
 				"     validateSchema: false,",
-				"     ignoreNoFilesFound: false) ~> GetPropertyOccupancyRawData"
+				"     ignoreNoFilesFound: false) ~> source1"
 			]
 		}
 	}
