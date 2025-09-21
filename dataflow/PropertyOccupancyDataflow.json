@@ -28,6 +28,10 @@
 					"name": "LoadPropertyOccupancyStage"
 				},
 				{
+					"dataset": {
+						"referenceName": "InvalidPropertyOccupancyData",
+						"type": "DatasetReference"
+					},
 					"name": "LoadInvalidRecords"
 				}
 			],
