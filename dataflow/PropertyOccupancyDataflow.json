@@ -26,6 +26,9 @@
 						"type": "DatasetReference"
 					},
 					"name": "LoadPropertyOccupancyStage"
+				},
+				{
+					"name": "LoadInvalidRecords"
 				}
 			],
 			"transformations": [
@@ -154,7 +157,11 @@
 				"     format: 'table',",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
-				"     errorHandlingOption: 'stopOnFirstError') ~> LoadPropertyOccupancyStage"
+				"     errorHandlingOption: 'stopOnFirstError') ~> LoadPropertyOccupancyStage",
+				"select3 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> LoadInvalidRecords"
 			]
 		}
 	}
