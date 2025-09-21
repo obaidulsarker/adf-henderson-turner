@@ -89,8 +89,8 @@
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> select1",
-				"select1 split(ERROR_FUNCTION(''),",
-				"     disjoint: false) ~> split2@(, )"
+				"select1 split(isNull(unit_id)==false(),",
+				"     disjoint: false) ~> split2@(validUnit, invalidUnit)"
 			]
 		}
 	}
