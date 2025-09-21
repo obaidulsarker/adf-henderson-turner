@@ -26,6 +26,12 @@
 				},
 				{
 					"name": "lookup1"
+				},
+				{
+					"name": "select1"
+				},
+				{
+					"name": "split2"
 				}
 			],
 			"scriptLines": [
@@ -68,7 +74,23 @@
 				"split1@valid, GetUnitInfo lookup(UnitIndex == unit_index,",
 				"     multiple: false,",
 				"     pickup: 'any',",
-				"     broadcast: 'auto')~> lookup1"
+				"     broadcast: 'auto')~> lookup1",
+				"lookup1 select(mapColumn(",
+				"          UnitIndex,",
+				"          PropertyIndex,",
+				"          UnitName,",
+				"          TenantCode,",
+				"          TenantName,",
+				"          OccupancyStartDate,",
+				"          OccupancyEndDate,",
+				"          MonthlyRent,",
+				"          OccupancyStatus,",
+				"          unit_id",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> select1",
+				"select1 split(ERROR_FUNCTION(''),",
+				"     disjoint: false) ~> split2@(, )"
 			]
 		}
 	}
