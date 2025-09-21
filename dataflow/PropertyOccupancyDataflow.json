@@ -49,6 +49,9 @@
 				},
 				{
 					"name": "select3"
+				},
+				{
+					"name": "ErrorReason"
 				}
 			],
 			"scriptLines": [
@@ -135,6 +138,7 @@
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> select3",
+				"split2@invalidUnit derive(error_reason = 'Invalid Unit Index Value') ~> ErrorReason",
 				"select2 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     deletable:false,",
