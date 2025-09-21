@@ -43,6 +43,9 @@
 				},
 				{
 					"name": "select2"
+				},
+				{
+					"name": "union1"
 				}
 			],
 			"scriptLines": [
@@ -115,12 +118,14 @@
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> select2",
+				"split1@invalid, GetUnitInfo union(byName: true)~> union1",
 				"select2 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     deletable:false,",
 				"     insertable:true,",
 				"     updateable:false,",
 				"     upsertable:false,",
+				"     recreate:true,",
 				"     format: 'table',",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
