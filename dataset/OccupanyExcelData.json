@@ -17,6 +17,43 @@
 			"sheetIndex": 0,
 			"firstRowAsHeader": true
 		},
-		"schema": []
+		"schema": [
+			{
+				"name": "UnitIndex",
+				"type": "String"
+			},
+			{
+				"name": "PropertyIndex",
+				"type": "String"
+			},
+			{
+				"name": "UnitName",
+				"type": "String"
+			},
+			{
+				"name": "TenantCode",
+				"type": "String"
+			},
+			{
+				"name": "TenantName",
+				"type": "String"
+			},
+			{
+				"name": "OccupancyStartDate",
+				"type": "String"
+			},
+			{
+				"name": "OccupancyEndDate",
+				"type": "String"
+			},
+			{
+				"name": "MonthlyRent",
+				"type": "String"
+			},
+			{
+				"name": "OccupancyStatus",
+				"type": "String"
+			}
+		]
 	}
 }

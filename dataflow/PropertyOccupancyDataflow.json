@@ -13,11 +13,28 @@
 				}
 			],
 			"sinks": [],
-			"transformations": [],
+			"transformations": [
+				{
+					"name": "split1"
+				}
+			],
 			"scriptLines": [
-				"source(allowSchemaDrift: true,",
+				"source(output(",
+				"          UnitIndex as string,",
+				"          PropertyIndex as string,",
+				"          UnitName as string,",
+				"          TenantCode as string,",
+				"          TenantName as string,",
+				"          OccupancyStartDate as string,",
+				"          OccupancyEndDate as string,",
+				"          MonthlyRent as string,",
+				"          OccupancyStatus as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
-				"     ignoreNoFilesFound: false) ~> source1"
+				"     ignoreNoFilesFound: false) ~> source1",
+				"source1 split(ERROR_FUNCTION(''),",
+				"     disjoint: false) ~> split1@(, )"
 			]
 		}
 	}
