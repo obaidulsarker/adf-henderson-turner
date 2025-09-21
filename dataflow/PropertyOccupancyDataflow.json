@@ -21,7 +21,11 @@
 			],
 			"sinks": [
 				{
-					"name": "sink1"
+					"dataset": {
+						"referenceName": "OccupanyStgTable",
+						"type": "DatasetReference"
+					},
+					"name": "LoadPropertyOccupancyStage"
 				}
 			],
 			"transformations": [
@@ -113,8 +117,14 @@
 				"     skipDuplicateMapOutputs: true) ~> select2",
 				"select2 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'table',",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> sink1"
+				"     skipDuplicateMapOutputs: true,",
+				"     errorHandlingOption: 'stopOnFirstError') ~> LoadPropertyOccupancyStage"
 			]
 		}
 	}
