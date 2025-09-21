@@ -12,6 +12,10 @@
 					"name": "source1"
 				},
 				{
+					"dataset": {
+						"referenceName": "dimUnitInfo",
+						"type": "DatasetReference"
+					},
 					"name": "GetUnitInfo"
 				}
 			],
@@ -36,8 +40,26 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> source1",
-				"source(allowSchemaDrift: true,",
-				"     validateSchema: false) ~> GetUnitInfo",
+				"source(output(",
+				"          unit_id as integer,",
+				"          unit_index as string,",
+				"          property_id as integer,",
+				"          unit_name as string,",
+				"          unit_type as string,",
+				"          number_of_bedrooms as integer,",
+				"          number_of_bathrooms as integer,",
+				"          unit_area as integer,",
+				"          secuirty_deposit as integer,",
+				"          monthly_rent as integer,",
+				"          unit_status as string,",
+				"          lease_start_date as timestamp,",
+				"          lease_end_date as timestamp,",
+				"          last_updated_at as timestamp",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     isolationLevel: 'READ_UNCOMMITTED',",
+				"     format: 'table') ~> GetUnitInfo",
 				"source1 split((isNull(UnitIndex) && isNull(PropertyIndex) && isNull(TenantCode) && isNull(TenantName) && isNull(OccupancyStartDate) && isNull(OccupancyStatus) && isDate(OccupancyStartDate, 'DD-MMM-YYYY') )==false(),",
 				"     disjoint: false) ~> split1@(valid, invalid)"
 			]
