@@ -1,0 +1,201 @@
+{
+	"name": "dataflow1",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "PropertyInspectionRawData",
+						"type": "DatasetReference"
+					},
+					"name": "GetPropertyInspectionRawData"
+				},
+				{
+					"dataset": {
+						"referenceName": "dim_inspection_type",
+						"type": "DatasetReference"
+					},
+					"name": "GetInspectionType"
+				},
+				{
+					"dataset": {
+						"referenceName": "dimUnitInfo",
+						"type": "DatasetReference"
+					},
+					"name": "GetUnitInfo"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "PropertyInspectionStage",
+						"type": "DatasetReference"
+					},
+					"name": "LoadPropertyInspectionStage"
+				},
+				{
+					"dataset": {
+						"referenceName": "invalid_property_inspection_csv",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
+			"transformations": [
+				{
+					"name": "split1"
+				},
+				{
+					"name": "lookupInspectionType"
+				},
+				{
+					"name": "split2"
+				},
+				{
+					"name": "ErrorReason1"
+				},
+				{
+					"name": "split3"
+				},
+				{
+					"name": "lookupUnit"
+				},
+				{
+					"name": "ErrorReason2"
+				},
+				{
+					"name": "ErrroReason3"
+				},
+				{
+					"name": "select1"
+				},
+				{
+					"name": "invalidSeelct2"
+				},
+				{
+					"name": "Invalidselect1"
+				},
+				{
+					"name": "union1"
+				},
+				{
+					"name": "InvalidSelect3"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          InspectionDueDate as string,",
+				"          UnitIndex as string,",
+				"          PropertyIndex as string,",
+				"          InspectionType as string,",
+				"          InspectionStatus as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> GetPropertyInspectionRawData",
+				"source(output(",
+				"          inspection_type_id as integer,",
+				"          inspection_type as string,",
+				"          last_updated_at as timestamp",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     isolationLevel: 'READ_UNCOMMITTED',",
+				"     format: 'table') ~> GetInspectionType",
+				"source(output(",
+				"          unit_id as integer,",
+				"          unit_index as string,",
+				"          property_id as integer,",
+				"          unit_name as string,",
+				"          unit_type as string,",
+				"          number_of_bedrooms as integer,",
+				"          number_of_bathrooms as integer,",
+				"          unit_area as integer,",
+				"          secuirty_deposit as integer,",
+				"          monthly_rent as integer,",
+				"          unit_status as string,",
+				"          lease_start_date as timestamp,",
+				"          lease_end_date as timestamp,",
+				"          last_updated_at as timestamp",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     isolationLevel: 'READ_UNCOMMITTED',",
+				"     format: 'table') ~> GetUnitInfo",
+				"GetPropertyInspectionRawData split((isNull(UnitIndex) && isNull(PropertyIndex) && isNull(InspectionDueDate) && isNull(InspectionType))==false(),",
+				"     disjoint: false) ~> split1@(NoEmptyFields, EmptyFields)",
+				"split1@NoEmptyFields, GetInspectionType lookup(InspectionType == inspection_type,",
+				"     multiple: false,",
+				"     pickup: 'any',",
+				"     broadcast: 'auto')~> lookupInspectionType",
+				"lookupInspectionType split(isNull(inspection_type_id)==false(),",
+				"     disjoint: false) ~> split2@(validInspectionType, invalidInspectionType)",
+				"split2@invalidInspectionType derive(error_column = 'Invalid Property Inspection Type') ~> ErrorReason1",
+				"lookupUnit split(ERROR_FUNCTION(''),",
+				"     disjoint: false) ~> split3@(validUnit, invalidUnit)",
+				"split2@validInspectionType, GetUnitInfo lookup(UnitIndex == unit_index,",
+				"     multiple: false,",
+				"     pickup: 'any',",
+				"     broadcast: 'auto')~> lookupUnit",
+				"split3@invalidUnit derive(error_message = 'Invalid Unit Index Value') ~> ErrorReason2",
+				"split1@EmptyFields derive(error_message = 'Mandatory columns are empty value') ~> ErrroReason3",
+				"split3@validUnit select(mapColumn(",
+				"          InspectionDueDate,",
+				"          UnitIndex,",
+				"          PropertyIndex,",
+				"          InspectionType,",
+				"          InspectionStatus",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> select1",
+				"ErrorReason2 select(mapColumn(",
+				"          InspectionDueDate,",
+				"          UnitIndex,",
+				"          PropertyIndex,",
+				"          InspectionType,",
+				"          InspectionStatus,",
+				"          error_message",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> invalidSeelct2",
+				"ErrorReason1 select(mapColumn(",
+				"          InspectionDueDate,",
+				"          UnitIndex,",
+				"          PropertyIndex,",
+				"          InspectionType,",
+				"          InspectionStatus,",
+				"          error_column",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> Invalidselect1",
+				"Invalidselect1, invalidSeelct2 union(byName: true)~> union1",
+				"ErrroReason3 select(mapColumn(",
+				"          InspectionDueDate,",
+				"          UnitIndex,",
+				"          PropertyIndex,",
+				"          InspectionType,",
+				"          InspectionStatus,",
+				"          error_message",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> InvalidSelect3",
+				"select1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     recreate:true,",
+				"     format: 'table',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     errorHandlingOption: 'stopOnFirstError') ~> LoadPropertyInspectionStage",
+				"union1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> sink1"
+			]
+		}
+	}
+}

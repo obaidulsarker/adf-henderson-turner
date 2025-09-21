@@ -1,0 +1,32 @@
+{
+	"name": "dim_inspection_type",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabase2",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "inspection_type_id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "inspection_type",
+				"type": "varchar"
+			},
+			{
+				"name": "last_updated_at",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			}
+		],
+		"typeProperties": {
+			"schema": "dw",
+			"table": "dim_inspection_type"
+		}
+	}
+}
