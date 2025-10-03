@@ -1,0 +1,16 @@
+{
+	"name": "PropertyUnitMappingExistingData",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabase2",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "stg",
+			"table": "property_unit_mapping"
+		}
+	}
+}
