@@ -1,0 +1,39 @@
+{
+	"name": "PropertyUnitMapping",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ADLStorage_LinkService",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Excel",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "Property-Unit-Mapping.xlsx",
+				"folderPath": "property-unit-mapping",
+				"container": "mapping"
+			},
+			"sheetIndex": 0,
+			"firstRowAsHeader": true
+		},
+		"schema": [
+			{
+				"name": "PropertyIndex",
+				"type": "String"
+			},
+			{
+				"name": "PropertyName",
+				"type": "String"
+			},
+			{
+				"name": "UnitIndex",
+				"type": "String"
+			},
+			{
+				"name": "UnitName",
+				"type": "String"
+			}
+		]
+	}
+}
