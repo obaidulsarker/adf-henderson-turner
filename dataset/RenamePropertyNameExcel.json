@@ -1,0 +1,95 @@
+{
+	"name": "RenamePropertyNameExcel",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ADLStorage_LinkService",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Excel",
+		"typeProperties": {
+			"sheetName": "Property (2)",
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "2026-07-05-ExistingProperty-Rename-Property.xlsx",
+				"folderPath": "remove-duplicate",
+				"container": "property"
+			},
+			"firstRowAsHeader": true
+		},
+		"schema": [
+			{
+				"name": "Snapshot Date",
+				"type": "String"
+			},
+			{
+				"name": "Property Index Value",
+				"type": "String"
+			},
+			{
+				"name": "Property Name",
+				"type": "String"
+			},
+			{
+				"name": "PropertyNewName",
+				"type": "String"
+			},
+			{
+				"name": "Property Address",
+				"type": "String"
+			},
+			{
+				"name": "Property Type",
+				"type": "String"
+			},
+			{
+				"name": "Acquisition Date",
+				"type": "String"
+			},
+			{
+				"name": "Original Purchase Price",
+				"type": "String"
+			},
+			{
+				"name": "Current Market Value",
+				"type": "String"
+			},
+			{
+				"name": "Capital Expenditures",
+				"type": "String"
+			},
+			{
+				"name": "InsuranceCosts",
+				"type": "String"
+			},
+			{
+				"name": "Occupancy",
+				"type": "String"
+			},
+			{
+				"name": "Taxes",
+				"type": "String"
+			},
+			{
+				"name": "Debt/Mortgage Balance",
+				"type": "String"
+			},
+			{
+				"name": "Year Built",
+				"type": "String"
+			},
+			{
+				"name": "Square Footage",
+				"type": "String"
+			},
+			{
+				"name": "Neighborhood/Micro-Market",
+				"type": "String"
+			},
+			{
+				"name": "Tax Assessment Value",
+				"type": "String"
+			}
+		]
+	}
+}
