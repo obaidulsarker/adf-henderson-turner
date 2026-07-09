@@ -34,7 +34,7 @@
 						"mappings": [
 							{
 								"source": {
-									"name": "Snapshot Date",
+									"name": "Property Name",
 									"type": "String",
 									"physicalType": "String"
 								},
@@ -46,7 +46,7 @@
 							},
 							{
 								"source": {
-									"name": "Property Index Value",
+									"name": "PropertyNewName",
 									"type": "String",
 									"physicalType": "String"
 								},
