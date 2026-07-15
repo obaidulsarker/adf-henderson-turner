@@ -19,7 +19,7 @@
 		],
 		"typeProperties": {
 			"schema": "stg",
-			"table": "property_rename"
+			"table": "property_new"
 		}
 	}
 }
