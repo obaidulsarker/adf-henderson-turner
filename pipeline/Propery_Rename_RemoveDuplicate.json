@@ -199,17 +199,6 @@
 							{
 								"source": {
 									"type": "String",
-									"ordinal": 15
-								},
-								"sink": {
-									"name": "last_updated_at",
-									"type": "DateTime",
-									"physicalType": "datetime"
-								}
-							},
-							{
-								"source": {
-									"type": "String",
 									"ordinal": 16
 								},
 								"sink": {
