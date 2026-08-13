@@ -19,54 +19,63 @@
 		},
 		"schema": [
 			{
+				"name": "property_id",
 				"type": "String"
 			},
 			{
+				"name": "property_name",
 				"type": "String"
 			},
 			{
+				"name": "property_index",
 				"type": "String"
 			},
 			{
+				"name": "property_type",
 				"type": "String"
 			},
 			{
+				"name": "property_address",
 				"type": "String"
 			},
 			{
+				"name": "aquisition_date",
 				"type": "String"
 			},
 			{
+				"name": "original_purchase_date",
 				"type": "String"
 			},
 			{
+				"name": "current_merket_value",
 				"type": "String"
 			},
 			{
+				"name": "capital_expendition",
 				"type": "String"
 			},
 			{
+				"name": "insurance_cost",
 				"type": "String"
 			},
 			{
+				"name": "tax_amount",
 				"type": "String"
 			},
 			{
+				"name": "built_year",
 				"type": "String"
 			},
 			{
+				"name": "square_footage",
 				"type": "String"
 			},
 			{
+				"name": "mortage_balance",
 				"type": "String"
 			},
 			{
-				"type": "String"
-			},
-			{
-				"type": "String"
-			},
-			{
+				"name": "property_name_old",
 				"type": "String"
 			}
 		]
