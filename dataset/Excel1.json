@@ -14,7 +14,8 @@
 				"fileName": "properties_corrected.xlsx",
 				"folderPath": "input",
 				"container": "property"
-			}
+			},
+			"firstRowAsHeader": true
 		},
 		"schema": [
 			{
