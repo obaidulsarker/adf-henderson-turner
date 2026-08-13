@@ -34,8 +34,9 @@
 						"mappings": [
 							{
 								"source": {
+									"name": "property_id",
 									"type": "String",
-									"ordinal": 1
+									"physicalType": "String"
 								},
 								"sink": {
 									"name": "property_id",
@@ -45,8 +46,9 @@
 							},
 							{
 								"source": {
+									"name": "property_name",
 									"type": "String",
-									"ordinal": 2
+									"physicalType": "String"
 								},
 								"sink": {
 									"name": "property_name",
@@ -56,8 +58,9 @@
 							},
 							{
 								"source": {
+									"name": "property_index",
 									"type": "String",
-									"ordinal": 3
+									"physicalType": "String"
 								},
 								"sink": {
 									"name": "property_index",
@@ -67,8 +70,9 @@
 							},
 							{
 								"source": {
+									"name": "property_type",
 									"type": "String",
-									"ordinal": 4
+									"physicalType": "String"
 								},
 								"sink": {
 									"name": "property_type_id",
@@ -78,8 +82,9 @@
 							},
 							{
 								"source": {
+									"name": "property_address",
 									"type": "String",
-									"ordinal": 5
+									"physicalType": "String"
 								},
 								"sink": {
 									"name": "property_address",
@@ -89,8 +94,9 @@
 							},
 							{
 								"source": {
+									"name": "aquisition_date",
 									"type": "String",
-									"ordinal": 6
+									"physicalType": "String"
 								},
 								"sink": {
 									"name": "aquisition_date",
@@ -100,8 +106,9 @@
 							},
 							{
 								"source": {
+									"name": "original_purchase_date",
 									"type": "String",
-									"ordinal": 7
+									"physicalType": "String"
 								},
 								"sink": {
 									"name": "original_purchase_date",
@@ -111,8 +118,9 @@
 							},
 							{
 								"source": {
+									"name": "current_merket_value",
 									"type": "String",
-									"ordinal": 8
+									"physicalType": "String"
 								},
 								"sink": {
 									"name": "current_merket_value",
@@ -124,8 +132,9 @@
 							},
 							{
 								"source": {
+									"name": "capital_expendition",
 									"type": "String",
-									"ordinal": 9
+									"physicalType": "String"
 								},
 								"sink": {
 									"name": "capital_expendition",
@@ -137,8 +146,9 @@
 							},
 							{
 								"source": {
+									"name": "insurance_cost",
 									"type": "String",
-									"ordinal": 10
+									"physicalType": "String"
 								},
 								"sink": {
 									"name": "insurance_cost",
@@ -150,8 +160,9 @@
 							},
 							{
 								"source": {
+									"name": "tax_amount",
 									"type": "String",
-									"ordinal": 11
+									"physicalType": "String"
 								},
 								"sink": {
 									"name": "tax_amount",
@@ -163,8 +174,9 @@
 							},
 							{
 								"source": {
+									"name": "built_year",
 									"type": "String",
-									"ordinal": 12
+									"physicalType": "String"
 								},
 								"sink": {
 									"name": "built_year",
@@ -174,8 +186,9 @@
 							},
 							{
 								"source": {
+									"name": "square_footage",
 									"type": "String",
-									"ordinal": 13
+									"physicalType": "String"
 								},
 								"sink": {
 									"name": "square_footage",
@@ -185,8 +198,9 @@
 							},
 							{
 								"source": {
+									"name": "mortage_balance",
 									"type": "String",
-									"ordinal": 14
+									"physicalType": "String"
 								},
 								"sink": {
 									"name": "mortage_balance",
@@ -197,9 +211,17 @@
 								}
 							},
 							{
+								"sink": {
+									"name": "last_updated_at",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								}
+							},
+							{
 								"source": {
+									"name": "property_name_old",
 									"type": "String",
-									"ordinal": 16
+									"physicalType": "String"
 								},
 								"sink": {
 									"name": "property_name_old",
