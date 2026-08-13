@@ -75,9 +75,9 @@
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "property_type_id",
-									"type": "Int32",
-									"physicalType": "int"
+									"name": "property_type",
+									"type": "String",
+									"physicalType": "varchar"
 								}
 							},
 							{
